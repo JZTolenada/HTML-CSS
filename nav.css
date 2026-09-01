@@ -1,0 +1,53 @@
+nav{
+    border-bottom: 1px solid lightgray;
+    background-color: #f5f5f5;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+.navlink{
+    color: black;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding: 5px;
+}
+
+.navlink:hover{
+    -webkit-text-stroke: 1px black;
+    border-bottom: 2px solid black;
+}
+
+nav ul{
+    display: flex;
+    gap: 20px;
+    justify-self: center;
+}
+
+.brand{
+    justify-self: start;
+    margin-left: 40px;
+    text-decoration: none;
+    color: black;
+}
+
+#cart{
+    justify-self: end;
+    margin-right: 30px;
+    color: black;
+    text-decoration: none;
+}
+
+.active{
+    -webkit-text-stroke: 1px black;
+    border-bottom: 2px solid black;
+}
+
+.letterQ{
+    color: blue;
+}

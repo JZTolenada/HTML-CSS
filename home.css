@@ -1,0 +1,33 @@
+.hero{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+
+.tagline{
+    font-family: 'Anton', sans-serif;
+    font-size: 100px;
+    margin: 0 20px;
+}
+
+.description{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: darkgray;
+    margin: 0 30px;
+}
+
+.hero-image img{
+    display: block;
+    width: 80%;
+    max-width: 515px;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    filter: drop-shadow(10px 15px 20px rgba(0, 0, 0, 0.35));
+}
+
+span{
+    color: blue;
+}
