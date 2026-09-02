@@ -1,0 +1,131 @@
+.about {
+    font-family: 'Anton', sans-serif;
+}
+
+.about-hero {
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-size: 40px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.about-hero p {
+    color: darkslategray;
+    font-size: 16px;
+}
+
+.meaning-section h2,
+.mission-section h2,
+.why-qora h2 {
+    color: black;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.meaning-section p,
+.info-card p,
+.why-card p {
+    color: darkslategray;
+    line-height: 1.7;
+}
+
+.meaning-section {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.meaning-section h3 {
+    margin-top: 25px;
+    color: #2563EB;
+}
+
+.mission-section {
+    max-width: 1000px;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.info-card {
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.why-qora {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0 60px;
+    text-align: center;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.why-card {
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+}
+
+.why-card h3 {
+    color: #2563EB;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 40px 5%;
+    }
+
+    .about-hero h1 {
+        font-size: 38px;
+    }
+
+    .mission-section {
+        grid-template-columns: 1fr;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .meaning-section {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero h1 {
+        font-size: 32px;
+    }
+
+    .about-hero p {
+        font-size: 16px;
+    }
+
+    .meaning-section h2,
+    .mission-section h2,
+    .why-qora h2 {
+        font-size: 26px;
+    }
+}
