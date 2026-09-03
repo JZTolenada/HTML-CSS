@@ -1,6 +1,6 @@
 .hero{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     align-items: center;
 }
 
@@ -30,4 +30,26 @@
 
 span{
     color: blue;
+}
+
+@media (max-width: 480px) {
+    .tagline{
+        font-size: 50px;
+        margin: 0 20px;
+    }
+
+    .description{
+        font-size: 12px;
+        margin: 0 20px;
+    }
+
+    .hero-image img{
+        display: block;
+        width: 80%;
+        max-width: 350px;
+        height: auto;
+        object-fit: contain;
+        margin: 0 auto;
+        filter: drop-shadow(10px 15px 20px rgba(0, 0, 0, 0.35));
+    }
 }
