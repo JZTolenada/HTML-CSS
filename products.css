@@ -1,9 +1,126 @@
+.products-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Anton', sans-serif;
+}
 
-/* Simple cart popup */
+.products-header h1 {
+    font-size: 40px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.products-header p {
+    color: darkslategray;
+    font-size: 16px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: #FFFFFF;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 10px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.product-image {
+    height: 220px;
+    padding: 20px;
+    background: #F8FAFC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h2 {
+    font-size: 20px;
+    color: #0F172A;
+    margin-bottom: 8px;
+}
+
+.product-info p {
+    color: blue;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.product-info button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: blue;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.product-info button:hover {
+    background: darkblue;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 40px auto 20px;
+}
+
+.pagination a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.pagination a:hover {
+    background: #2563EB;
+    color: white;
+    border-color: #2563EB;
+}
+
+.pagination .active-page {
+    background: #2563EB;
+    color: white;
+    border-color: #2563EB;
+}
+
+/* Cart Modal */
 .cart-modal {
     display: none;
     position: fixed;
-    z-index: 10;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -20,17 +137,23 @@
     border-radius: 10px;
 }
 
-.cart-header,
-.cart-footer {
+.cart-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+}
+
+.cart-header h2 {
+    margin: 0;
 }
 
 .close-cart {
     border: none;
     background: none;
-    font-size: 22px;
+    font-size: 24px;
     cursor: pointer;
 }
 
@@ -43,19 +166,105 @@
 .cart-item {
     border-bottom: 1px solid lightgray;
     padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.cart-item button,
-.checkout-btn {
+.cart-item button {
     border: none;
-    background: blue;
+    background: red;
     color: white;
     padding: 7px 10px;
     border-radius: 5px;
     cursor: pointer;
 }
 
+.cart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid lightgray;
+    padding-top: 10px;
+}
+
+.checkout-btn {
+    border: none;
+    background: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .products-header h1 {
+        font-size: 30px;
+    }
+
+    .products-header p {
+        font-size: 14px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .product-image {
+        height: 200px;
+    }
+
+    .product-info {
+        padding: 15px;
+    }
+
+    .product-info h2 {
+        font-size: 18px;
+    }
+
+    .product-info p {
+        font-size: 16px;
+    }
+
+    .pagination a {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .products-header h1 {
+        font-size: 34px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .product-image {
+        height: 200px;
+    }
+
+    .product-info {
+        padding: 15px;
+    }
+
+    .product-info h2 {
+        font-size: 18px;
+    }
+
+    .product-info p {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
     .cart-panel {
         margin: 30px auto;
         width: 92%;
