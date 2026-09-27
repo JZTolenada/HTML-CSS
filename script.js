@@ -47,13 +47,13 @@ function createCartModal() {
 
 function addToCart(name, price) {
     let item = cart.find(i => i.name === name);
-    
+
     if (item) {
         item.quantity += 1;
     } else {
         cart.push({name: name, price: price, quantity: 1, checked: false});
     }
-    
+
     alert(name + ' added to cart!');
 }
 
@@ -76,7 +76,7 @@ function showCart() {
         if (cart[i].checked) {
             total += itemTotal;
         }
-        
+
         html += `
             <div class="cart-item">
                 <input type="checkbox" id="check${i}" ${cart[i].checked ? 'checked' : ''} onchange="toggleItem(${i})">
@@ -111,8 +111,6 @@ function increaseQty(index) {
 function decreaseQty(index) {
     if (cart[index].quantity > 1) {
         cart[index].quantity -= 1;
-    } else {
-        removeItem(index);
     }
     showCart();
 }
@@ -124,7 +122,7 @@ function removeItem(index) {
 
 function checkoutCart() {
     let selectedItems = cart.filter(item => item.checked);
-    
+
     if (selectedItems.length === 0) {
         alert('Please select items to checkout.');
         return;
