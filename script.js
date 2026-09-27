@@ -169,11 +169,137 @@ function removeItem(index) {
     showCart();
 }
 
+function showCheckoutModal(total) {
+    let checkoutOverlay = document.createElement('div');
+    checkoutOverlay.id = 'checkoutOverlay';
+    checkoutOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `;
+
+    checkoutOverlay.innerHTML = `
+        <div style="
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 90%;
+            animation: slideIn 0.3s ease-out;
+        ">
+            <div style="
+                width: 80px;
+                height: 80px;
+                background: #22c55e;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 20px;
+                font-size: 40px;
+            ">✓</div>
+            
+            <h2 style="
+                font-size: 28px;
+                color: #0F172A;
+                margin: 20px 0;
+                font-family: 'Anton', Arial, sans-serif;
+            ">Thank You for Your Purchase!</h2>
+            
+            <p style="
+                font-size: 16px;
+                color: #666;
+                margin: 15px 0;
+            ">Your order has been successfully placed.</p>
+            
+            <div style="
+                background: #F0F4F8;
+                padding: 20px;
+                border-radius: 10px;
+                margin: 20px 0;
+            ">
+                <p style="
+                    font-size: 14px;
+                    color: #666;
+                    margin: 5px 0;
+                ">Total Amount</p>
+                <p style="
+                    font-size: 32px;
+                    color: blue;
+                    font-weight: bold;
+                    margin: 5px 0;
+                ">₱${total.toLocaleString()}</p>
+            </div>
+            
+            <p style="
+                font-size: 14px;
+                color: #999;
+                margin: 15px 0;
+            ">We'll send a confirmation email shortly.</p>
+            
+            <button onclick="closeCheckoutModal()" style="
+                background: blue;
+                color: white;
+                border: none;
+                padding: 14px 40px;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background 0.2s ease;
+                margin-top: 20px;
+            " onmouseover="this.style.background='darkblue'" onmouseout="this.style.background='blue'">
+                Continue Shopping
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(checkoutOverlay);
+
+    checkoutOverlay.onclick = function(event) {
+        if (event.target == checkoutOverlay) {
+            closeCheckoutModal();
+        }
+    };
+
+    let style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+function closeCheckoutModal() {
+    let overlay = document.getElementById('checkoutOverlay');
+    if (overlay) {
+        overlay.remove();
+    }
+    closeCart();
+}
+
 function checkoutCart() {
     let selectedItems = cart.filter(item => item.checked);
 
     if (selectedItems.length === 0) {
-        alert('Please select items to checkout.');
+        showNotification('Please select items to checkout.');
         return;
     }
 
@@ -182,9 +308,8 @@ function checkoutCart() {
         total += selectedItems[i].price * selectedItems[i].quantity;
     }
 
-    alert('Thank you for your purchase!\nTotal: ₱' + total);
+    showCheckoutModal(total);
     cart = [];
     saveCart();
     showCart();
-    closeCart();
 }
