@@ -1,17 +1,52 @@
 let cart = [];
 
 function openCart() {
-    document.getElementById('cartModal').style.display = 'block';
+    let modal = document.getElementById('cartModal');
+    if (!modal) {
+        createCartModal();
+        modal = document.getElementById('cartModal');
+    }
+    modal.style.display = 'block';
     showCart();
 }
 
 function closeCart() {
-    document.getElementById('cartModal').style.display = 'none';
+    let modal = document.getElementById('cartModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function createCartModal() {
+    let modal = document.createElement('div');
+    modal.id = 'cartModal';
+    modal.className = 'cart-modal';
+    modal.innerHTML = `
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2>Shopping Cart</h2>
+                <button class="close-cart" onclick="closeCart()">✕</button>
+            </div>
+            <div id="cartList" class="cart-items">
+                <p>Cart is empty</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">Total: ₱<span id="total">0</span></div>
+                <button class="checkout-btn" onclick="checkoutCart()">Checkout</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeCart();
+        }
+    };
 }
 
 function addToCart(name, price) {
     cart.push({name: name, price: price});
-    showCart();
     alert(name + ' added to cart!');
 }
 
@@ -54,10 +89,3 @@ function checkoutCart() {
     showCart();
     closeCart();
 }
-
-window.onclick = function(event) {
-    let modal = document.getElementById('cartModal');
-    if (event.target == modal) {
-        closeCart();
-    }
-};
