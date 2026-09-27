@@ -47,22 +47,40 @@ function createCartModal() {
 
 function showNotification(message) {
     let notification = document.getElementById('notification');
+
     if (!notification) {
         notification = document.createElement('div');
         notification.id = 'notification';
-        notification.className = 'notification';
         document.body.appendChild(notification);
     }
-    
+
     notification.innerHTML = `
-        <div class="notification-content">
-            <span class="notification-icon">✓</span>
-            <span class="notification-text">${message}</span>
+        <div style="
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #22c55e;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+        ">
+            <span style="font-size: 18px; font-weight: bold;">✓</span>
+            <span>${message}</span>
         </div>
     `;
+
+    notification.style.position = 'fixed';
+    notification.style.top = '20px';
+    notification.style.right = '20px';
+    notification.style.zIndex = '9999';
     notification.style.display = 'block';
-    
-    setTimeout(() => {
+
+    clearTimeout(notification.timeoutId);
+    notification.timeoutId = setTimeout(() => {
         notification.style.display = 'none';
     }, 2000);
 }
