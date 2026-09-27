@@ -1,4 +1,8 @@
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 function openCart() {
     let modal = document.getElementById('cartModal');
@@ -94,6 +98,7 @@ function addToCart(name, price) {
         cart.push({name: name, price: price, quantity: 1, checked: false});
     }
 
+    saveCart();
     showNotification(name + ' added to cart!');
 }
 
@@ -140,11 +145,13 @@ function showCart() {
 
 function toggleItem(index) {
     cart[index].checked = !cart[index].checked;
+    saveCart();
     showCart();
 }
 
 function increaseQty(index) {
     cart[index].quantity += 1;
+    saveCart();
     showCart();
 }
 
@@ -152,11 +159,13 @@ function decreaseQty(index) {
     if (cart[index].quantity > 1) {
         cart[index].quantity -= 1;
     }
+    saveCart();
     showCart();
 }
 
 function removeItem(index) {
     cart.splice(index, 1);
+    saveCart();
     showCart();
 }
 
@@ -175,6 +184,7 @@ function checkoutCart() {
 
     alert('Thank you for your purchase!\nTotal: ₱' + total);
     cart = [];
+    saveCart();
     showCart();
     closeCart();
 }
