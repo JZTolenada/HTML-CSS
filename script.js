@@ -194,19 +194,7 @@ function showCheckoutModal(total) {
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             max-width: 500px;
             width: 90%;
-            animation: slideIn 0.3s ease-out;
-        ">
-            <div style="
-                width: 80px;
-                height: 80px;
-                background: #22c55e;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 auto 20px;
-                font-size: 40px;
-            ">✓</div>
+            animation: slideIn 0.3s ease-out;">
             
             <h2 style="
                 font-size: 28px;
@@ -239,12 +227,6 @@ function showCheckoutModal(total) {
                     margin: 5px 0;
                 ">₱${total.toLocaleString()}</p>
             </div>
-            
-            <p style="
-                font-size: 14px;
-                color: #999;
-                margin: 15px 0;
-            ">We'll send a confirmation email shortly.</p>
             
             <button onclick="closeCheckoutModal()" style="
                 background: blue;
